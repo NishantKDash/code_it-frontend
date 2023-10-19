@@ -1,0 +1,9 @@
+.navbutton:hover{
+    background-color: yellow;
+    cursor:pointer
+}
+
+.nav-dp{
+    border-radius: 50px;
+    background-color: antiquewhite;
+}
