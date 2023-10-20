@@ -33,7 +33,17 @@ export const Navbar = () => {
                 </button>
               </li>
 
-             { name === 'User' && <li className="nav-item">
+              { role === 'ADMIN' && <li className="nav-item">
+                <Link
+                  className="nav-link actoive navbutton"
+                  aria-current="page"
+                  to="/admin/questions"
+                >
+                  View And Add Questions
+                </Link>
+              </li>}
+
+             { role === 'PUBLIC' && <li className="nav-item">
                 <Link
                   className="nav-link actoive navbutton"
                   aria-current="page"
@@ -43,7 +53,7 @@ export const Navbar = () => {
                 </Link>
               </li>}
 
-              { name !== 'User' && 
+              { role !== 'PUBLIC' && 
                 <li className="nav-item">
                   <a className="nav-link navbutton" onClick={handleLogout}>
                     Logout

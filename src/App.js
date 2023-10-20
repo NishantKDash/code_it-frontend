@@ -24,6 +24,7 @@ function App() {
            <Route path = '/questions' element = {<Questions/>}></Route>
            <Route path ='/*' element={<Error></Error>}></Route>
            <Route path = '/logout' element = {<Logout/>}></Route>
+           <Route path = '/admin/questions' element = {<Questions/>}></Route>
        </Routes>
        </UserProvider>
       </BrowserRouter>
