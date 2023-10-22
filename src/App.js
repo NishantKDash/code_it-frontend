@@ -7,6 +7,9 @@ import Questions from "./components/Questions";
 import Error from "./components/Error";
 import Logout from "./components/Logout";
 import { UserProvider } from "./context/UserContext";
+import AddQuestion from "./components/AddQuestion";
+import Practice from "./components/Practice";
+import SingleQuestion from "./components/SingleQuestion";
 
 
 
@@ -25,6 +28,9 @@ function App() {
            <Route path ='/*' element={<Error></Error>}></Route>
            <Route path = '/logout' element = {<Logout/>}></Route>
            <Route path = '/admin/questions' element = {<Questions/>}></Route>
+           <Route path = '/addQuestion' element = {<AddQuestion/>}></Route>
+           <Route path = '/student/questions' element = {<Practice/>}></Route>
+           <Route path = '/student/questions/:qid' element={<SingleQuestion/>}></Route>
        </Routes>
        </UserProvider>
       </BrowserRouter>
