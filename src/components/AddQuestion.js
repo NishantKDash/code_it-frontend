@@ -18,7 +18,7 @@ const AddQuestion = () => {
     let question = {}
     let title = ''
     let description=''
-    let solutionTemplate = ''
+    let solutionTemplate = {}
     let testcases = []
     let examples = []
     let exampleInput = ''
@@ -26,6 +26,9 @@ const AddQuestion = () => {
     let exampleExplanation = ''
     let testcaseTemplate = ''
     let testcaseOutput = '' 
+    let javaTemplate = ''
+    let pythonTemplate = ''
+    let cppTemplate = ''
 
     function addExample()
     {
@@ -56,10 +59,11 @@ const AddQuestion = () => {
 
     function handleSubmit()
     {
-        if(title.length === 0 || description.length === 0)
+        if(title.length === 0 || description.length === 0 || javaTemplate.length === 0 || pythonTemplate.length === 0 || cppTemplate.length === 0)
         alert("Some fields are empty !!")
         else
         {
+            solutionTemplate = {java:javaTemplate,python:pythonTemplate,cpp:cppTemplate}
             question = {title:title , description:description , solutionTemplate:solutionTemplate , examples:examples , testCases:testcases}
             
             CreateQuestion(question).then(res=>{
@@ -72,7 +76,7 @@ const AddQuestion = () => {
              question = {}
              title = ''
              description=''
-             solutionTemplate = ''
+             solutionTemplate = {}
              testcases = [{}]
              examples = [{}]
              exampleInput = ''
@@ -80,6 +84,9 @@ const AddQuestion = () => {
              exampleExplanation = ''
              testcaseTemplate = ''
             testcaseOutput = '' 
+             javaTemplate = ''
+            pythonTemplate = ''
+            cppTemplate = ''
 
         }
     }
@@ -116,9 +123,25 @@ const AddQuestion = () => {
             <input
               type="text"
               className="form-control my-2"
-              placeholder="Enter solution template for question"
+              placeholder="Enter solution template in java"
               onChange={(e)=>{
-                solutionTemplate = e.target.value;
+                javaTemplate = e.target.value;
+              }}
+            />
+            <input
+              type="text"
+              className="form-control my-2"
+              placeholder="Enter solution template in python"
+              onChange={(e)=>{
+                pythonTemplate = e.target.value;
+              }}
+            />
+            <input
+              type="text"
+              className="form-control my-2"
+              placeholder="Enter solution template for cpp"
+              onChange={(e)=>{
+                cppTemplate = e.target.value;
               }}
             />
           </div>

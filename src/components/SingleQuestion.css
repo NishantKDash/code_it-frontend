@@ -1,0 +1,22 @@
+.questionDescription{
+    background-color: gainsboro;
+}
+.answerDescription{
+    background-color: bisque;
+}
+
+.toolbar{
+    background-color:aliceblue;
+}
+
+.body{
+    background-color: lightblue;
+}
+
+.result{
+    background-color: beige;
+}
+
+.examples{
+    background-color: azure;
+}
