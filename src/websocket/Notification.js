@@ -12,6 +12,6 @@ notificationClient.activate()
 export function subscribeNotification(setResult)
 {
     const username = jwtDecode(localStorage.getItem("token")).username
-    const subscription = notificationClient.subscribe(`/topic/${username}` , message => {let obj = JSON.parse(message.body); setResult(obj);})
+    const subscription = notificationClient.subscribe(`/topic/${username}` , message => {let obj = JSON.parse(message.body); setResult(obj.result)})
     return subscription;
 }

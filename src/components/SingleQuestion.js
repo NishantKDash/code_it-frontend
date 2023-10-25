@@ -106,10 +106,13 @@ const SingleQuestion = () => {
               if(lang === '') alert("Please select a language");
               else
               {
-              attempt = {qid:question.qid , username:name, language:lang,code:document.getElementById("codeArea").value }; SubmitAttempt(attempt).then(res=>{console.log(res);setResult(res.data)}).catch(e=>{console.log(e)})}}}>Submit</button>
+              attempt = {qid:question.qid , username:name, language:lang,code:document.getElementById("codeArea").value };
+               SubmitAttempt(attempt).then(res=>{console.log(res);setResult('CHECKING')}).catch(e=>{console.log(e)})}}}>Submit</button>
           </div>
           {result != null && <div className="container result my-1">
-              {result}
+            {result === 'SUCCESS' && <div className="p-3 mb-2 bg-success text-white">Correct Answer !!</div>}
+            {result === 'CHECKING' && <div className="p-3 mb-2 bg-warning text-white">Running your code</div>}
+            {result === 'FAILURE' && <div className="p-3 mb-2 bg-danger text-white">Your code failed. Please correct and submit again.</div>}
           </div>}
         </div>
       </div> 
