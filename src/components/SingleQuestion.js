@@ -6,6 +6,7 @@ import "./SingleQuestion.css";
 import { subscribeNotification } from "../websocket/Notification";
 import { useUser } from "../context/UserContext";
 import SubmitAttempt from "../apis/SubmitAttempt";
+import { Client } from '@stomp/stompjs';
 
 const SingleQuestion = () => {
   const navigate = useNavigate();
@@ -21,11 +22,26 @@ const SingleQuestion = () => {
       const currentTimestamp = Math.floor(Date.now() / 1000);
       if (jwtDecode(localStorage.getItem("token")).exp <= currentTimestamp)
         navigate("/login");
+        
+
+        const client = new Client({
+          brokerURL: 'ws://localhost:8080/notification',
+          onConnect: () => {
+            client.subscribe(`/topic/${name}`, message => {let obj = JSON.parse(message.body); console.log(obj);setResult(obj.result)});
+          },
+          onStompError: error => {
+            console.error('STOMP Error:', error);
+          },
+          onWebSocketClose: () => {
+            console.warn('WebSocket connection closed');
+          },
+        });
+      
+        client.activate();
 
       GetSingleQuestion(param.qid)
         .then((res) => {
           setQuestion(res.data);
-          subscribeNotification(setResult)
         })
         .catch((e) => {
           console.log(e);

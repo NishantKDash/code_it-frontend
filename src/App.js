@@ -10,6 +10,7 @@ import { UserProvider } from "./context/UserContext";
 import AddQuestion from "./components/AddQuestion";
 import Practice from "./components/Practice";
 import SingleQuestion from "./components/SingleQuestion";
+import Attempts from "./components/Attempts";
 
 
 
@@ -31,6 +32,7 @@ function App() {
            <Route path = '/addQuestion' element = {<AddQuestion/>}></Route>
            <Route path = '/student/questions' element = {<Practice/>}></Route>
            <Route path = '/student/questions/:qid' element={<SingleQuestion/>}></Route>
+           <Route path = '/student/attempts' element={<Attempts/>}></Route>
        </Routes>
        </UserProvider>
       </BrowserRouter>

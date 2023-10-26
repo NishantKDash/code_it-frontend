@@ -65,6 +65,16 @@ export const Navbar = () => {
                 </Link>
               </li>}
 
+              { role === 'STUDENT' && <li className="nav-item">
+                <Link
+                  className="nav-link actoive navbutton"
+                  aria-current="page"
+                  to="/student/attempts"
+                >
+                  Submissions
+                </Link>
+              </li>}
+
              { role === 'PUBLIC' && <li className="nav-item">
                 <Link
                   className="nav-link actoive navbutton"
