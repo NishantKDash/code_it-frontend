@@ -27,7 +27,9 @@ const SingleQuestion = () => {
         const client = new Client({
           brokerURL: 'ws://localhost:8080/notification',
           onConnect: () => {
+
             client.subscribe(`/topic/${name}`, message => {let obj = JSON.parse(message.body); console.log(obj);setResult(obj.result)});
+            console.log("Subscribed!!" + `/topic/${name}`);
           },
           onStompError: error => {
             console.error('STOMP Error:', error);
@@ -35,6 +37,7 @@ const SingleQuestion = () => {
           onWebSocketClose: () => {
             console.warn('WebSocket connection closed');
           },
+          reconnectDelay: 5000,
         });
       
         client.activate();
